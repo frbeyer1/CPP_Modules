@@ -14,6 +14,7 @@
 # define CONTACT_HPP
 
 # include <iostream>
+# include <iomanip>
 
 class contact {
 
@@ -25,6 +26,10 @@ private:
     std::string nickname;
     std::string phonenumber;
     std::string darkest_secret;
+    int         index;
+
+    std::string get_input(std::string str) const;
+    std::string print_contact_sum(std::string str) const;
 
 public:
 
@@ -32,7 +37,9 @@ public:
     ~contact(void);
     
     void    init(void);
-
+    void    set_index(int i);
+    void    view_in_column(int index) const;
+    void    display_one_contact(void);
 };
 
 #endif

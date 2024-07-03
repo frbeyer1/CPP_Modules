@@ -34,11 +34,20 @@ void	phonebook::welcome(void) const{
 }
 
 void	phonebook::addcontact(void){
-	int	i = 0;
-	std::cout << "first name:\n";
-
+	static int	i = 0;
+	this->contacts[i].init();
+	this->contacts[i].set_index(i);
+	i++;
 }
 
+void	phonebook::printcontacts(void) const{
+	int	i = 0;
+	while(i < 8) {
+		this->contacts[i].view_in_column(i);
+		i++;
+	}
+	std::cout << std::endl;
+}
 void	phonebook::search(void) const{
 	std::cout << "search";
 }

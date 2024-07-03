@@ -22,8 +22,10 @@ int main(int ac, char **av)
 	{
 		if (input.compare("ADD") == 0)
 			phonebook.addcontact();
-		if (input.compare("SEARCH") == 0)
+		if (input.compare("SEARCH") == 0){
+			phonebook.printcontacts();
 			phonebook.search();
+		}
 		std::cout << "> " << std::flush;
 		std::cin >> input;
 	}

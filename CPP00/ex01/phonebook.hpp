@@ -29,7 +29,7 @@ public:
     ~phonebook(void);
 
     void    addcontact(void);
-    void    printcontact(void) const;
+    void    printcontacts(void) const;
     void    search(void) const;
     void    welcome(void) const;
 
