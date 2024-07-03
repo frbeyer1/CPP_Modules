@@ -48,6 +48,7 @@ void	phonebook::printcontacts(void) const{
 	}
 	std::cout << std::endl;
 }
+
 void	phonebook::search(void) const{
 	std::cout << "search";
 }
