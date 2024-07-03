@@ -20,11 +20,18 @@ class contact {
 private:
 
     std::string name;
+    std::string first_name;
+    std::string last_name;
+    std::string nickname;
+    std::string phonenumber;
+    std::string darkest_secret;
 
 public:
 
     contact(void);
     ~contact(void);
+    
+    void    init(void);
 
 };
 

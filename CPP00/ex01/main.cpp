@@ -20,8 +20,10 @@ int main(int ac, char **av)
 	phonebook.welcome();
 	while(input.compare("EXIT"))
 	{
-		if (input.compare("hallo") == 0)
-			std::cout << "hi";
+		if (input.compare("ADD") == 0)
+			phonebook.addcontact();
+		if (input.compare("SEARCH") == 0)
+			phonebook.search();
 		std::cout << "> " << std::flush;
 		std::cin >> input;
 	}

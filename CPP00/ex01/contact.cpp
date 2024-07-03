@@ -17,3 +17,7 @@ contact::contact(void){
 
 contact::~contact(void){
 }
+
+void    contact::init(void){
+    std::cout << "first name:\n";
+}

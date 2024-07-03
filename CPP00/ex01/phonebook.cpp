@@ -32,3 +32,13 @@ void	phonebook::welcome(void) const{
 	std::cout << "SEARCH - to search for a contact\n";
 	std::cout << "EXIT - to exit the phonebook\n\n";
 }
+
+void	phonebook::addcontact(void){
+	int	i = 0;
+	std::cout << "first name:\n";
+
+}
+
+void	phonebook::search(void) const{
+	std::cout << "search";
+}
