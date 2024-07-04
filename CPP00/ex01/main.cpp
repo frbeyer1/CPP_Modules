@@ -26,7 +26,7 @@ int main(int ac, char **av)
 			phonebook.printcontacts();
 			phonebook.search();
 		}
-		std::cout << "> " << std::flush;
+		std::cout << "> ";
 		std::cin >> input;
 	}
     return (EXIT_SUCCESS);

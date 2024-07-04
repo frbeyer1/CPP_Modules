@@ -52,15 +52,29 @@ void    contact::init(void){
 
 std::string contact::print_contact_sum(std::string str) const{
     if(str.length() > 10)
-        str.substr(0, 9) + ".";
+        return str.substr(0, 9) + ".";
     return (str);
 }
+
 void    contact::view_in_column(int index) const{
     if(this->first_name.empty() || this->last_name.empty() || this->nickname.empty())
         return ;
-    std::cout << "|" << std::setw(10) << index << std::flush;
-    std::cout << "|" << std::setw(10) << this->print_contact_sum(this->first_name) << std::flush;
-    std::cout << "|" << std::setw(10) << this->print_contact_sum(this->last_name) << std::flush;
-    std::cout << "|" << std::setw(10) << this->print_contact_sum(this->nickname) << std::flush;
+    std::cout << "|" << std::setw(10) << index + 1;
+    std::cout << "|" << std::setw(10) << this->print_contact_sum(this->first_name);
+    std::cout << "|" << std::setw(10) << this->print_contact_sum(this->last_name);
+    std::cout << "|" << std::setw(10) << this->print_contact_sum(this->nickname);
+    std::cout << std::endl;
+}
+
+void    contact::display_one_contact(int i) const{
+    if(this->first_name.empty() || this->last_name.empty() || this->nickname.empty())
+        return ;
+    std::cout << std::endl;
+    std::cout << "< Contact Nbr." << i + 1 << " >\n" << std::endl;
+    std::cout << "  First Name: " << this->first_name << std::endl;
+    std::cout << "  Last Name: " << this->last_name << std::endl;
+    std::cout << "  Nickname: " << this->nickname << std::endl;
+    std::cout << "  Phonenumber: " << this->phonenumber << std::endl;
+    std::cout << "  Darkest Secret: " << this->darkest_secret << std::endl;
     std::cout << std::endl;
 }

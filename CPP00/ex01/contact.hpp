@@ -35,11 +35,11 @@ public:
 
     contact(void);
     ~contact(void);
-    
+
     void    init(void);
     void    set_index(int i);
     void    view_in_column(int index) const;
-    void    display_one_contact(void);
+    void    display_one_contact(int i) const;
 };
 
 #endif
