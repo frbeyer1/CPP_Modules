@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbeyer <frbeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/05 15:18:10 by frbeyer           #+#    #+#             */
-/*   Updated: 2024/07/05 16:07:05 by frbeyer          ###   ########.fr       */
+/*   Created: 2024/07/05 15:19:48 by frbeyer           #+#    #+#             */
+/*   Updated: 2024/07/05 16:21:44 by frbeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie *newZombie( std::string name ){
-    Zombie *newZombie;
+Zombie::Zombie(const std::string& name) : _name(name){}
 
-    newZombie = ::new Zombie(name);
-    return(newZombie);
+Zombie::Zombie(){}
+
+void    Zombie::setName(std::string &name){
+    name = name;
+}
+
+void    Zombie::announce(void) const{
+    std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
