@@ -6,7 +6,7 @@
 /*   By: frbeyer <frbeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 15:50:19 by frbeyer           #+#    #+#             */
-/*   Updated: 2024/07/05 16:26:22 by frbeyer          ###   ########.fr       */
+/*   Updated: 2024/07/05 17:15:15 by frbeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ Zombie *zombieHorde( int N, std::string name ){
     if (N <= 0)
         return(NULL);
     newZombies = ::new Zombie[N];
-    for (int i; i = 0; i<N)
-    {
+    for (int i = 0; i<N; i++)
         newZombies[i].setName(name);
-    }
     return (newZombies);
 }
