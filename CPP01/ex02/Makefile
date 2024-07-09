@@ -1,15 +1,8 @@
-NAME = UnnecessaryViolence
+NAME = HithisisBrain
 
-SRC =	HumanA.cpp	\
-		HumanB.cpp	\
-		Weapon.cpp	\
-		main.cpp
+SRC =	main.cpp
 
 OBJ = $(SRC:.cpp=.o)
-
-HEADER =	HumanA.hpp	\
-			HumanB.hpp	\
-			Weapon.hpp
 
 CC = g++
 
@@ -19,7 +12,7 @@ RM = rm -f
 
 all:$(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
+$(NAME): $(OBJ)
 		$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 clean:
