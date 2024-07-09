@@ -21,4 +21,6 @@ int main()
     }
 return 0;
 }
-  
+
+//human a uses refernce besause it doest change the state of having a weapon
+//human b uses pointer because it can have no weapon too, the variable gets modified

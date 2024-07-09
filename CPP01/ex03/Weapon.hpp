@@ -6,7 +6,7 @@
 /*   By: frbeyer <frbeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:40:29 by frbeyer           #+#    #+#             */
-/*   Updated: 2024/07/09 13:24:03 by frbeyer          ###   ########.fr       */
+/*   Updated: 2024/07/09 14:57:49 by frbeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ private:
     std::string _type;
 
 public:
-    Weapon(std::string &type);
-    std::string    get_type(void) const;
-    void    set_type(const std::string &type);
+    Weapon(const std::string &type);
+    std::string    getType(void) const;
+    void           setType(const std::string &type);
 };
 
 #endif
