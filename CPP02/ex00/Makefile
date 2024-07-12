@@ -1,11 +1,11 @@
 NAME = Fixed
 
-SRC =	Fixed.cpp	\
+SRC =	fixed.cpp	\
 		main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER =	Fixed.hpp
+HEADER =	harl.hpp
 
 CC = g++
 

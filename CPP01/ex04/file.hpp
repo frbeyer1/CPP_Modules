@@ -5,6 +5,15 @@
 # include <fstream>
 # include <vector>
 # include <string>
-using namespace std;
+
+class file{
+
+public:
+    file(std::string file);
+    void    replace_content(std::string tofind, std::string raplace);
+private:
+    std::string _infile;
+    std::string _outfile;
+};
 
 #endif

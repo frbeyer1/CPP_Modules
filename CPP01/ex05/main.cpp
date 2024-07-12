@@ -11,6 +11,6 @@ int main()
         std::cin >> input;
         harl.complain(input);
     } while (input != "EXIT");
-                                      
+                                   
     return(0);
 }
