@@ -8,7 +8,7 @@ class Fixed{
 private:
 
     int                 _store;
-    static const int    _bits;
+    static const int    _bits = 8;
 
 public:
     Fixed();//deafult constructor
@@ -17,6 +17,7 @@ public:
     ~Fixed(void);
     
     int     getRawBits() const;
+    void setRawBits( int const raw );
 };
 
 #endif
