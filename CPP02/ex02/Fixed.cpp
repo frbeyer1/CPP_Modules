@@ -23,13 +23,105 @@ Fixed::~Fixed(void){
 
 
 
-
-Fixed & Fixed::operator=(Fixed const & rhs){
+Fixed & Fixed::operator=(Fixed const & rhs)
+{
     std::cout<<"Copy assignment operator called"<<std::endl;
     if (this != &rhs)
         _store = rhs.getRawBits();
     return (*this);
 };// assignment constructor
+
+
+//compairson
+bool    Fixed::operator>(Fixed rhs) const{
+    return(this->toFloat() > rhs.toFloat());
+}
+bool    Fixed::operator<(Fixed rhs) const{
+    return(this->toFloat() < rhs.toFloat());
+}
+bool    Fixed::operator>=(Fixed rhs) const{
+    return(this->toFloat() >= rhs.toFloat());
+}
+bool    Fixed::operator<=(Fixed rhs) const{
+    return(this->toFloat() >= rhs.toFloat());
+}
+bool    Fixed::operator==(Fixed rhs) const{
+    return(this->toFloat() == rhs.toFloat());
+}
+bool    Fixed::operator!=(Fixed rhs) const{
+    return(this->toFloat() != rhs.toFloat());
+}
+
+
+//arithmetic
+float   Fixed::operator+(Fixed rhs) const
+{
+    return(this->toFloat() + rhs.toFloat());
+}
+float   Fixed::operator-(Fixed rhs) const
+{
+    return(this->toFloat() - rhs.toFloat());
+}
+float   Fixed::operator*(Fixed rhs) const
+{
+    return(this->toFloat() * rhs.toFloat());
+}
+float   Fixed::operator/(Fixed rhs) const
+{
+    return(this->toFloat() / rhs.toFloat());
+}
+
+
+//pre-increment
+Fixed   Fixed::operator++(){
+    this->_store++;
+    return(*this);
+}
+Fixed   Fixed::operator--(){
+    this->_store--;
+    return(*this);
+}
+
+
+//post-increment
+Fixed   Fixed::operator++(int){
+    Fixed tmp = *this;
+    ++this->_store;
+    return (tmp);
+}
+Fixed   Fixed::operator--(int){
+    Fixed tmp = *this;
+    --this->_store;
+    return (tmp);
+}
+
+
+Fixed &Fixed::min(Fixed &n1, Fixed &n2){
+    if(n1.toFloat() < n2.toFloat() )
+        return(n1);
+    else
+        return(n2);
+};
+const Fixed &Fixed::min(Fixed const &n1, Fixed const &n2){
+    if(n1.toFloat() < n2.toFloat() )
+        return(n1);
+    else
+        return(n2);
+};
+Fixed &Fixed::max(Fixed &n1, Fixed &n2){
+    if(n1.toFloat() > n2.toFloat() )
+        return(n1);
+    else
+        return(n2);
+};
+const Fixed &Fixed::max(Fixed const &n1, Fixed const &n2){
+    if(n1.toFloat() > n2.toFloat() )
+        return(n1);
+    else
+        return(n2);
+};
+
+
 
 std::ostream &operator<<(std::ostream &output, const Fixed &rhs){
     output << rhs.toFloat();
