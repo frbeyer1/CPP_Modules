@@ -1,31 +1,31 @@
 #include "Fixed.hpp"
 
 Fixed::Fixed() : _store(0){
-    std::cout<<"Default constructor called"<<std::endl;
+    // std::cout<<"Default constructor called"<<std::endl;
 };//deafult constructor
 
 Fixed::Fixed(const int &i) : _store(i << _bits) {
-    std::cout<<"Int constructor called"<<std::endl;
+    // std::cout<<"Int constructor called"<<std::endl;
 };//copy constructor
 
 Fixed::Fixed(const float &f) : _store((int)roundf((f * (1 << _bits)))) {
-    std::cout<<"Float constructor called"<<std::endl;
+    // std::cout<<"Float constructor called"<<std::endl;
 };//copy constructor
 
 Fixed::Fixed(Fixed const & src){
-    std::cout<<"Copy constructor called"<<std::endl;
+    // std::cout<<"Copy constructor called"<<std::endl;
     *this = src;
 };//copy constructor
 
 Fixed::~Fixed(void){
-    std::cout<<"Destructor called"<<std::endl;
+    // std::cout<<"Destructor called"<<std::endl;
 };
 
 
 
 Fixed & Fixed::operator=(Fixed const & rhs)
 {
-    std::cout<<"Copy assignment operator called"<<std::endl;
+    // std::cout<<"Copy assignment operator called"<<std::endl;
     if (this != &rhs)
         _store = rhs.getRawBits();
     return (*this);
@@ -140,7 +140,7 @@ int Fixed::getRawBits() const{
 };
 
 float   Fixed::toFloat() const{
-    return((float)_store / (1<<_store));
+    return((float)_store / (1<<_bits));
 };
 
 int     Fixed::toInt() const{
