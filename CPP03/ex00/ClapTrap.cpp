@@ -32,12 +32,12 @@ void    ClapTrap::attack(const std::string &target){
 void    ClapTrap::takeDamage(unsigned int amount){
     if (this->_HitPoints == 0)
         std::cout << RED << "Claptrap -" << this->_Name << "- is dead" << RESET << std::endl;
-    else if (this->_HitPoints - amount > 0){
-        std::cout<< YELLOW << "Claptrap -" << this->_Name << "- took " << amount << " damage" << RESET <<std::endl;
-        this->_HitPoints -= amount;
-    }
-    else if(this->_HitPoints - amount <= 0){
+    else if((this->_HitPoints <= amount)){
         std::cout<< RED << "Claptrap -" << this->_Name << "- took " << amount << " damage and is dead"<< RESET<<std::endl;
+        this->_HitPoints = 0;
+    }
+    else{
+        std::cout<< YELLOW << "Claptrap -" << this->_Name << "- took " << amount << " damage" << RESET <<std::endl;
         this->_HitPoints -= amount;
     }
 };
