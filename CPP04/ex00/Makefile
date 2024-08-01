@@ -3,11 +3,17 @@ NAME = Animal
 SRC =	animal.cpp	\
 		Dog.cpp	\
 		Cat.cpp	\
-		main.cpp
+		main.cpp \
+		WrongAnimal.cpp\
+		WrongCat.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER =	animal.hpp
+HEADER =	animal.hpp	\
+			Dog.hpp		\
+			Cat.hpp		\
+			WrongAnimal.hpp\
+			WrongCat.hpp
 
 CC = g++
 

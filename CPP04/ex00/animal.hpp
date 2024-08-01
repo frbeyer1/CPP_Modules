@@ -1,35 +1,20 @@
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 # include <iostream>
+# include <string>
 
 class Animal{
 
-    private:
-    std::string type;
+    protected:
+    std::string _type;
 
     public:
     Animal();
-    ~Animal();
-    void makeSound();
-    std::string    getType();
-};
-
-class Dog : public Animal{
-    private:
-    std::string type = "Dog";
-    public:
-    Dog();
-    ~Dog();
-    void makeSound();
-};
-
-class Cat : public Animal{
-    private:
-    std::string type = "Cat";
-    public:
-    Cat();
-    ~Cat();
-    void makeSound();
+    Animal(const Animal &copy);
+    virtual ~Animal();
+    Animal &operator=(const Animal &src);
+    virtual void makeSound() const;
+    std::string    getType() const;
 };
 
 #endif
