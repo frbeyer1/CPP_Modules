@@ -5,7 +5,8 @@ SRC =	animal.cpp	\
 		Cat.cpp	\
 		main.cpp \
 		WrongAnimal.cpp\
-		WrongCat.cpp
+		WrongCat.cpp	\
+		Brain.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -13,7 +14,8 @@ HEADER =	animal.hpp	\
 			Dog.hpp		\
 			Cat.hpp		\
 			WrongAnimal.hpp\
-			WrongCat.hpp
+			WrongCat.hpp	\
+			Brain.hpp
 
 CC = g++
 
