@@ -1,10 +1,10 @@
 #include "Dog.hpp"
 
 Dog::Dog() : Animal() {
-    _type = "Dog";
+    this->_type = "Dog";
     std::cout<<"Dog Constructor"<<std::endl;
-    _brain = new Brain();
-    if (_brain = NULL)
+    this->_brain = new Brain();
+    if (_brain == NULL)
         exit(1);
 };
 
@@ -29,8 +29,8 @@ Dog  &Dog::operator=(const Dog &src){
 void    Dog::makeSound()const{
     std::cout<<"wuff"<<std::endl;
 }
-void  Dog::get_idea(size_t i)const{
-    for(i=0; i<100; i++)
+void  Dog::get_idea(size_t j)const{
+    for(int i=0; i<(j+1); i++)
         std::cout<<"Dog Ideas: "<<_brain->get_idea(i)<<std::endl;
 };
 

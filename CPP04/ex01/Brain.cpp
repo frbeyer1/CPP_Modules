@@ -42,6 +42,4 @@ void    Brain::set_idea(size_t i, std::string idea){
     {
         this->_ideas[i] = idea;
     }
-    else
-        std::cout<<"to much thinking, brain hurts:("<<std::endl;
 };

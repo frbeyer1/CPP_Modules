@@ -19,7 +19,7 @@ HEADER =	animal.hpp	\
 
 CC = c++
 
-FLAGS = -Wall -Werror -std=c++98 -fsanitize=address -g -o
+FLAGS = -Wall -Werror -std=c++98 -fsanitize=address -g
 
 RM = rm -f
 

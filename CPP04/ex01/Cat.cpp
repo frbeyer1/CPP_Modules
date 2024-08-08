@@ -4,7 +4,7 @@ Cat::Cat() : Animal() {
     _type = "Cat";
     std::cout<<"Cat Constructor"<<std::endl;
     _brain = new Brain();
-    if (_brain = NULL)
+    if (_brain == NULL)
         exit(1);
 };
 
@@ -29,9 +29,9 @@ Cat  &Cat::operator=(const Cat &src){
 void    Cat::makeSound()const{
     std::cout<<"miau"<<std::endl;
 }
-void  Cat::get_idea(size_t i)const{
-    for(i=0; i<100; i++)
-        std::cout<<"Dog Ideas: "<<_brain->get_idea(i)<<std::endl;
+void  Cat::get_idea(size_t j)const{
+    for(int i=0; i<(j+1); i++)
+        std::cout<<"Cat Ideas: "<<_brain->get_idea(i)<<std::endl;
 };
 void  Cat::set_idea(size_t i, std::string idea){
     this->_brain->set_idea(i, idea);
