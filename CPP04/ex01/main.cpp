@@ -19,8 +19,7 @@ int main()
 		std::cerr << "Exiting the process now." << std::endl;
 		exit(1);
 	}
-
-	// a->set_idea(0, "I have to sniff it");
+	a->set_idea(0, "I have to sniff it");
 	// a->set_idea(1, "I have to pee on it");
 	// a->set_idea(2, "I have to sniff it again");
 	// a->set_idea(101, "some shit");

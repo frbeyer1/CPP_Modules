@@ -36,11 +36,12 @@ const std::string *Brain::idea_address(size_t i) const{
     else
         return(NULL);
 };
+
 void    Brain::set_idea(size_t i, std::string idea){
-        if(i<100)
-        {
-            this->_ideas[i] = idea;
-        }
-        else
-            std::cout<<"to much thinking, brain hurts:("<<std::endl;
+    if(i<100)
+    {
+        this->_ideas[i] = idea;
+    }
+    else
+        std::cout<<"to much thinking, brain hurts:("<<std::endl;
 };

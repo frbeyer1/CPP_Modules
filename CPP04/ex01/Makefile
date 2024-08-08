@@ -17,9 +17,9 @@ HEADER =	animal.hpp	\
 			WrongCat.hpp	\
 			Brain.hpp
 
-CC = g++
+CC = c++
 
-FLAG = -Wall -Werror -std=c++98 -g -o
+FLAGS = -Wall -Werror -std=c++98 -fsanitize=address -g -o
 
 RM = rm -f
 
