@@ -18,3 +18,5 @@ class AAnimal{
 };
 
 #endif
+
+// ausprobieren ob constructor in private muss um nicht instanziierbar zu sein
