@@ -7,6 +7,7 @@ class AAnimal{
 
     protected:
         std::string _type;
+        //AAnimal();
 
     public:
         AAnimal();
@@ -19,4 +20,5 @@ class AAnimal{
 
 #endif
 
-// ausprobieren ob constructor in private muss um nicht instanziierbar zu sein
+// wenn nur constructor in private/protected -> nicht instanziierbar und nicht abstrakt
+// wenn nur rein virtuelle Methode (virtual ... fkt = 0) -> nicht instaziierbar und abstrakt
