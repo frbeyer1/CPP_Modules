@@ -18,4 +18,4 @@ AAnimal  &AAnimal::operator=(const AAnimal &src){
 
 std::string    AAnimal::getType() const {return(this->_type);}
 
-void    AAnimal::makeSound()const{}
+//makesound not implemented
