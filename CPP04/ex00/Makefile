@@ -17,7 +17,7 @@ HEADER =	animal.hpp	\
 
 CC = g++
 
-FLAG = -Wall -Werror -std=c++98
+FLAGS = -Wall -Werror -std=c++98
 
 RM = rm -f
 
