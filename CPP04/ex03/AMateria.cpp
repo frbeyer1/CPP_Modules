@@ -15,4 +15,6 @@ AMateria  &AMateria::operator=(const AMateria &src){
 
 std::string const &AMateria::getType() const{};
 
-void AMateria::use(ICharacter& target){};
+void AMateria::use(ICharacter& target){
+    std::cout<<"AMateria - abstract use on "<<target.getName()<<std::endl;
+};
