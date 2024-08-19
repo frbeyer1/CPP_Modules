@@ -1,8 +1,10 @@
-#ifndef AMATERIA
-# define AMATERIA
+#ifndef AMATERIA_HPP
+# define AMATERIA_HPP
 # include <iostream>
 # include <string>
 # include "ICharacter.hpp"
+
+class ICharacter;
 
 class AMateria {
     protected: 
@@ -20,7 +22,7 @@ class AMateria {
 class Ice : public AMateria {
     public:
         Ice();
-        Ice(std::string const & type);
+        Ice(const Ice & type);
         Ice  &operator=(const Ice &src);
         virtual ~Ice();
         virtual AMateria *clone() const;
@@ -30,7 +32,7 @@ class Ice : public AMateria {
 class Cure : public AMateria {
     public:
         Cure();
-        Cure(std::string const & type);
+        Cure(const Cure & type);
         Cure  &operator=(const Cure &src);
         virtual ~Cure();
         virtual AMateria *clone() const;

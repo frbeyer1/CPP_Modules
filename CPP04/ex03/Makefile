@@ -1,15 +1,19 @@
 NAME = Interface
 
 SRC =	main.cpp	\
-		AMateria.cpp
+		AMateria.cpp\
+		Ice.cpp\
+		Cure.cpp\
+		Character.cpp\
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER =	AMateria.hpp
+HEADER =	AMateria.hpp\
+			ICharacter.hpp\
 
 CC = c++
 
-FLAGS = -Wall -Werror -std=c++98 -fsanitize=address -g
+FLAGS = -Wall -Werror -std=c++98 -g
 
 RM = rm -f
 

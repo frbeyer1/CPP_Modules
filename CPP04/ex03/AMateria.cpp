@@ -13,7 +13,7 @@ AMateria  &AMateria::operator=(const AMateria &src){
     return(*this);
 }
 
-std::string const &AMateria::getType() const{};
+std::string const &AMateria::getType() const{return (_type);};
 
 void AMateria::use(ICharacter& target){
     std::cout<<"AMateria - abstract use on "<<target.getName()<<std::endl;
