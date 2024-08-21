@@ -1,9 +1,9 @@
-#include "ICharacter.hpp"
+#include "Character.hpp"
 
 Character::Character(std::string const & name) : _name(name){
     std::cout<<"Character Constructor: "<< _name<<std::endl;
     for(int i=0; i<4; i++)
-        _inventory[i] = 0;
+        _inventory[i] = NULL;
 };
 
 Character::Character(Character const & copy) : _name(copy.getName()){
@@ -27,11 +27,11 @@ Character  &Character::operator=(const Character &src){
 };
 
 Character::~Character(){
-    for (int i=0; i < 4; i++)
-    {
-        if(_inventory[i])
-            delete _inventory[i];
-    }
+    // for (int i=0; i < 4; i++)
+    // {
+    //     if(_inventory[i])
+    //         delete _inventory[i];
+    // }
     std::cout<<"Character Destructor: "<<_name<<std::endl;
 };
 
@@ -51,9 +51,9 @@ void Character::equip(AMateria* m){
 }; 
 
 void Character::unequip(int idx){
-    if(idx >= 0 && idx <4 )
+    if(idx >= 0 && idx < 4 )
     {
-        if(_inventory[idx] != 0)
+        if(_inventory[idx] != NULL)
         {
             AMateria *ptr = _inventory[idx];
             _inventory[idx] = 0;
@@ -66,7 +66,21 @@ void Character::unequip(int idx){
         std::cout<<_name<<"'s inventory doesn't have a slot "<<idx<<std::endl;
 }; 
 
-void Character::use(int idx, ICharacter& target){};
+void Character::use(int idx, ICharacter& target)
+{
+    if(idx >= 0 && idx < 4 )
+    {
+        if(_inventory[idx] != NULL)
+        {
+            std::cout<<_name;
+            _inventory[idx]->use(target);
+        }
+        else
+            std::cout<<_name<<"'s slot "<<idx<<" is empty"<<std::endl;
+    }
+    else
+        std::cout<<_name<<"'s inventory doesn't have a slot "<<idx<<std::endl;
+};
 
 std::string const &Character::getName() const{
     return(_name);

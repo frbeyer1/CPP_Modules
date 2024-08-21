@@ -9,11 +9,15 @@ SRC =	main.cpp	\
 OBJ = $(SRC:.cpp=.o)
 
 HEADER =	AMateria.hpp\
+			Ice.hpp\
+			Cure.hpp\
 			ICharacter.hpp\
+			Character.hpp
 
 CC = c++
 
-FLAGS = -Wall -Werror -std=c++98 -g
+# FLAGS = -Wall -Werror -std=c++98 -g
+FLAGS = -Wall -Werror -std=c++98 -fsanitize=address -g
 
 RM = rm -f
 
