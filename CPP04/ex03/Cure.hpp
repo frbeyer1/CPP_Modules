@@ -3,6 +3,8 @@
 # include "AMateria.hpp"
 
 class Cure : public AMateria {
+    private:
+        std::string _type;
     public:
         Cure();
         Cure(const Cure & type);

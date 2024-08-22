@@ -1,7 +1,6 @@
 #include "Ice.hpp"
 
-Ice::Ice() : AMateria() {
-    _type = "ice";
+Ice::Ice() : AMateria("ice"){
     std::cout<<"Ice Constructor"<<std::endl;
 }
 
@@ -9,11 +8,12 @@ Ice::~Ice(){
     std::cout<<"Ice Destructor"<<std::endl;
 };
 
-Ice::Ice(const Ice &type){std::cout<<"Ice Copy Constructor"<<std::endl;};
+Ice::Ice(const Ice &copy) : AMateria(copy)
+{
+    std::cout<<"Ice Copy Constructor"<<std::endl;
+};
 
 Ice  &Ice::operator=(const Ice &src){
-    if(this == &src)
-        return(*this);
     this->_type = src._type;
     return(*this);
 }
@@ -24,5 +24,5 @@ AMateria *Ice::clone() const{
 };
 
 void Ice::use(ICharacter &target){
-    std::cout<<"* shoots an ice bolt at "<< &target << " *";
+    std::cout<<"* shoots an ice bolt at "<< target.getName() << " *"<<std::endl;
 };

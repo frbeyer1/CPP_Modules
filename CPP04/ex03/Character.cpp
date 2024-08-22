@@ -9,6 +9,8 @@ Character::Character(std::string const & name) : _name(name){
 Character::Character(Character const & copy) : _name(copy.getName()){
     for (int i=0; i < 4; i++)
     {
+        if(_inventory[i])
+            delete _inventory[i];
         if(copy._inventory[i])
             _inventory[i] = (copy._inventory[i])->clone();
     }
@@ -27,25 +29,27 @@ Character  &Character::operator=(const Character &src){
 };
 
 Character::~Character(){
-    // for (int i=0; i < 4; i++)
-    // {
-    //     if(_inventory[i])
-    //         delete _inventory[i];
-    // }
+    for (int i=0; i < 4; i++)
+    {
+        if(_inventory[i])
+            delete _inventory[i];   
+    }
     std::cout<<"Character Destructor: "<<_name<<std::endl;
 };
 
 void Character::equip(AMateria* m){
-    if (m == nullptr) {
+    if (m == NULL) {
         std::cout << "Cannot equip a null Materia." << std::endl;
         return;
     }
-    for (int i = 0; i < 4; ++i) {
-        if (this->_inventory[i] == nullptr) {
+    for (int i = 0; i < 4; i++) 
+    {
+        if (this->_inventory[i] == NULL)
+        {
             this->_inventory[i] = m;
-        std::cout<<_name<<" equiped one "<<m->getType()<<" to slot "<<i<<std::endl;
-        return;
-    }
+            std::cout<<_name<<" equiped one "<<m->getType()<<" to slot "<<i<<std::endl;
+            return;
+        }
     }
     std::cout << "Inventory is full, cannot equip more Materia." << std::endl;
 }; 
@@ -72,8 +76,8 @@ void Character::use(int idx, ICharacter& target)
     {
         if(_inventory[idx] != NULL)
         {
-            std::cout<<_name;
-            _inventory[idx]->use(target);
+            std::cout<<_name<<": ";
+            (this->_inventory[idx])->use(target);
         }
         else
             std::cout<<_name<<"'s slot "<<idx<<" is empty"<<std::endl;
