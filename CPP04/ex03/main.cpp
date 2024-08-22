@@ -27,7 +27,7 @@ int main() {
 	me->use(3, *bob); 
 	me->use(4, *bob);
 	delete tmp;//so richtig? weil meteria soll ja auf dem boden liegen bleiben, wenn kein platz mehr ist, also hier loeschen?
-	delete bob; 
+	delete bob;
 	delete me;
 	delete src;
 	return 0; 
