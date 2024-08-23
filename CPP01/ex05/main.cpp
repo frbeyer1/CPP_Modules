@@ -1,9 +1,9 @@
-#include "harl.hpp"
+#include "Harl.hpp"
 
 int main()
 {
     std::string input;
-    harl        harl;
+    Harl        harl;
 
     do
     {

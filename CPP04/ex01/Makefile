@@ -1,6 +1,6 @@
 NAME = Animal
 
-SRC =	animal.cpp	\
+SRC =	Animal.cpp	\
 		Dog.cpp	\
 		Cat.cpp	\
 		main.cpp \
@@ -10,7 +10,7 @@ SRC =	animal.cpp	\
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER =	animal.hpp	\
+HEADER =	Animal.hpp	\
 			Dog.hpp		\
 			Cat.hpp		\
 			WrongAnimal.hpp\

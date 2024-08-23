@@ -1,7 +1,7 @@
 SRC = megaphone.cpp
 OBJ = $(SRC:.cpp=.o)
-CC = g++
-FLAG = -Wall -Werror -std=c++98
+CC = c++
+FLAGS = -Wall -Werror -std=c++98
 RM = rm -f
 
 NAME = megaphone

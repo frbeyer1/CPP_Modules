@@ -2,8 +2,8 @@ NAME = Zombie
 
 SRC =	main.cpp		\
 		Zombie.cpp 		\
-		newZombie.cpp	\
-		randomChump.cpp	\
+		NewZombie.cpp	\
+		RandomChump.cpp	\
 
 OBJ = $(SRC:.cpp=.o)
 

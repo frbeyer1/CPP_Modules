@@ -18,8 +18,8 @@ class ClapTrap{
     int         _Attack_Damage;
 
     public:
-    ClapTrap(const std::string &name);
     ClapTrap();
+    ClapTrap(const std::string &name);
     ~ClapTrap();
     void    attack(const std::string &target);
     void    takeDamage(unsigned int amount);
