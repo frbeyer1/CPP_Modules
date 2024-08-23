@@ -63,6 +63,7 @@ int	phonebook::readinput(void) const{
 	} while (!valid);
 	return (input - 1);
 }
+
 void	phonebook::search(void) const{
 	int	i = this->readinput();
 	this->contacts[i].display_one_contact(i);
