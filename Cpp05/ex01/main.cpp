@@ -1,17 +1,21 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
-    Bureaucrat *a = new Bureaucrat();
+    // Bureaucrat *a = new Bureaucrat();
+
+    Bureaucrat a("lol");
     std::cout << a;
+    Form A("Formular", 24, 45);
 
     try
     {
-        a->incrementGrade();
+        a.incrementGrade();
     }
     catch(Bureaucrat::GradeTooHighException &e)
     {
-        std::cerr << "Incrementing of " << a->getName() << " failed: " << e.what() << std::endl;
+        std::cerr << "Incrementing of " << a.getName() << " failed: " << e.what() << std::endl;
     }
     std::cout << a;
 }

@@ -4,9 +4,9 @@ Bureaucrat::Bureaucrat(): _name("default"), _grade(150){
     std::cout<<"Default Constructor "<< this->getName() << " with grade " << this->getGrade() <<std::endl;
 };
 
-Bureaucrat::Bureaucrat(const Bureaucrat &src): _name(src.getName() + "_copy"){
-    std::cout << "Copy Constructor " << src.getName() << " into " << this->getName() << std::endl;
-    *this = src;
+Bureaucrat::Bureaucrat(const Bureaucrat &copy): _name(copy.getName() + "_copy"){
+    std::cout << "Copy Constructor " << copy.getName() << " into " << this->getName() << std::endl;
+    *this = copy;
 };
 
 Bureaucrat::Bureaucrat(int grade): _name("default"){
@@ -71,8 +71,18 @@ const char *Bureaucrat::GradeTooLowException::what(void) const throw(){
     return ("Grade too low");
 };
 
-std::ostream &operator<<(std::ostream &o, Bureaucrat *a)
+std::ostream &operator<<(std::ostream &o, Bureaucrat &a)
 {
-    o << "Bureaucrat " << a->getName() << ": Grade - " << a->getGrade() << std::endl;
+    o << "Bureaucrat " << a.getName() << ": Grade - " << a.getGrade() << std::endl;
     return(o);
 }
+
+void    Bureaucrat::signForm(Form &src){
+    if(src.is_signed() == true)
+        std::cout<<this->_name<<" signed "<<src.getName()<<std::endl;
+    //call besigned
+    else
+    {   
+        std::cout<<this->_name<<" couldn't sign "<<src.getName()<<std::endl;
+    }
+};

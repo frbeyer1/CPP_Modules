@@ -2,6 +2,7 @@
 # define BUREAUCRAT_HPP
 # include <iostream>
 # include <string>
+# include "Form.hpp"
 
 class Bureaucrat{
 
@@ -16,7 +17,7 @@ class Bureaucrat{
         Bureaucrat(const std::string name);
         Bureaucrat(const std::string name, int grade);
         Bureaucrat(int grade);
-        Bureaucrat(const Bureaucrat &src);
+        Bureaucrat(const Bureaucrat &copy);
         Bureaucrat &operator=(const Bureaucrat &src);
         ~Bureaucrat();
 
@@ -35,7 +36,9 @@ class Bureaucrat{
             public:
             virtual const char *what() const throw();
         };
+
+        void    signForm(Form &src);
 };
 
-std::ostream &operator<<(std::ostream &o, Bureaucrat *a);
+std::ostream &operator<<(std::ostream &o, Bureaucrat &a);
 #endif
