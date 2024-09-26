@@ -1,7 +1,7 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 # include <iostream>
-#include <Bureaucrat.hpp>
+# include "Bureaucrat.hpp"
 
 class Form
 {
@@ -25,7 +25,6 @@ class Form
         size_t  getExecuteGrade(void) const;
         size_t  getSignGrade(void) const;
         void    beSigned(Bureaucrat &src);
-        void    signForm();
         bool    is_signed(void) const;
 
         class GradeTooHighException: public std::exception{

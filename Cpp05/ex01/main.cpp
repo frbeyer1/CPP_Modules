@@ -5,7 +5,7 @@ int main()
 {
     // Bureaucrat *a = new Bureaucrat();
 
-    Bureaucrat a("lol");
+    Bureaucrat a("lol", 150);
     std::cout << a;
     Form A("Formular", 24, 45);
 
@@ -17,5 +17,6 @@ int main()
     {
         std::cerr << "Incrementing of " << a.getName() << " failed: " << e.what() << std::endl;
     }
+    a.signForm(A);
     std::cout << a;
 }
