@@ -23,8 +23,8 @@ class Form
         ~Form();
 
         const std::string getName(void) const;
-        size_t  getExecuteGrade(void) const;
-        size_t  getSignGrade(void) const;
+        int  getExecuteGrade(void) const;
+        int  getSignGrade(void) const;
         void    beSigned(Bureaucrat &src);
         bool    is_signed(void) const;
 

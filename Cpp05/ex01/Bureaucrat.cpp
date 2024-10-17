@@ -49,7 +49,7 @@ const std::string Bureaucrat::getName(void) const{
     return(this->_name);
 };
 
-size_t Bureaucrat::getGrade(void) const{
+int Bureaucrat::getGrade(void) const{
     return(this->_grade);
 };
 
@@ -88,6 +88,6 @@ void    Bureaucrat::signForm(Form &src)
     }
     catch (std::exception& e)
     {
-        std::cout<<this->_name<<" couldn't sign "<<src.getName()<< ", because Grade to low";
+        std::cout<<this->_name<<" couldn't sign "<<src.getName()<< ", because "<< e.what()<< std::endl;
     }
 };

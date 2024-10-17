@@ -5,7 +5,7 @@ int main()
 {
     // Bureaucrat *a = new Bureaucrat();
 
-    Bureaucrat a("lol", 150);
+    Bureaucrat a("lol", 30);
     std::cout << a;
     Form A("Formular", 24, 45);
 
