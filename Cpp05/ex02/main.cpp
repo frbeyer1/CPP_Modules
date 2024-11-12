@@ -35,6 +35,7 @@ int main()
 	try
 	{
 		b->beSigned(*a);
+		a->executeForm(*b);
 		b->execute(*a);
 	}
 	catch(Bureaucrat::GradeTooLowException &e)
@@ -50,7 +51,7 @@ int main()
 	// {
 	// 	std::cerr << "\033[33m" << a->getName() << " was not able to sign " << b->getName() << ": " << e.what() << "\033[0m" << std::endl;
 	// }
-	std::cout << b;
+	// std::cout << b;
 	std::cout << std::endl;
 	std::cout << "\033[34mDeconstructing\033[0m" << std::endl;
 	delete a;

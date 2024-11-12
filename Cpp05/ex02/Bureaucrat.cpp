@@ -91,3 +91,7 @@ void    Bureaucrat::signForm(Form &src)
         std::cout<<this->_name<<" couldn't sign "<<src.getName()<< ", because "<< e.what()<< std::endl;
     }
 };
+
+void    Bureaucrat::executeForm(Form &form) const{
+    form.execute(*this);
+};
