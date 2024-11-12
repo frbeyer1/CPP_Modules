@@ -1,4 +1,4 @@
-#include "animal.hpp"
+#include "Animal.hpp"
 #include "Brain.hpp"
 
 class Dog : public AAnimal{

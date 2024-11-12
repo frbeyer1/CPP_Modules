@@ -1,12 +1,13 @@
-NAME = ScavTrap
+NAME = Bureaucrat
 
-SRC =	ClapTrap.cpp	\
-		ScavTrap.cpp	\
-		main.cpp
+SRC =	main.cpp		\
+		Bureaucrat.cpp	\
+		Form.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER =	Fixed.hpp
+HEADER =	Bureaucrat.hpp	\
+			Form.hpp
 
 CC = c++
 
