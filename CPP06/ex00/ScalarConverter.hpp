@@ -5,17 +5,35 @@
 #include <string>
 #include <variant>
 #include <stdexcept>
+#include <stdio.h>
+#include <stdlib.h>
+// #include <cctype>
+
+typedef enum e_type
+{
+    Char,
+    Int,
+    Float,
+    Double,
+    NonPrintable
+} t_type;
 
 class ScalarConverter
 {
     private:
         ScalarConverter();
-
-    public:
         ScalarConverter(ScalarConverter &copy);
         ~ScalarConverter();
-
         ScalarConverter &operator=(const ScalarConverter &src);
 
-        static std::variant<int,float,double, std::string> convert(std::string &str);
+        std::string _type;
+
+        int         _IntValue;
+        double      _DoubleValue;
+        float       _FloatValue;
+        char        _CharValue;
+
+    public:
+
+        static void convert(std::string literal);
 };
