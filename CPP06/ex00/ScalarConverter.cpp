@@ -236,7 +236,10 @@ void ScalarConverter::convert(std::string literal)
         DoubleConversion(literal);
         break;
         case NonDisplayable:
-        std::cout << "Not printable" << std::endl;
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: impossible" <<  std::endl;
         break;
     }
 };
