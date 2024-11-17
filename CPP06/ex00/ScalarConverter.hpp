@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <stdio.h>
 #include <stdlib.h>
+#include "limits.h"
 // #include <cctype>
 
 typedef enum e_type
@@ -15,7 +16,7 @@ typedef enum e_type
     Int,
     Float,
     Double,
-    NonPrintable
+    NonDisplayable
 } t_type;
 
 class ScalarConverter
