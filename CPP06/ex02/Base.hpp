@@ -1,23 +1,16 @@
 #pragma once
 
 #include <iostream>
-#include <sstream>
-#include <string>
-#include <variant>
-#include <stdexcept>
-#include <stdio.h>
-
+#include <cstdio>
+#include <cstdlib>
 
 class Base{
-    private:
+    protected:
 
     public:
         Base();
         virtual ~Base();
 
-        Base *generate(void);
-        void identify(Base *p);
-        void identify(Base &p);
 };
 
 class A : public Base{
@@ -31,3 +24,7 @@ class B : public Base{
 class C : public Base{
 
 };
+
+Base *generate(void);
+void identify(Base *p);
+void identify(Base &p);

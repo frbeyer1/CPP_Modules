@@ -22,14 +22,45 @@ Base *generate(void){
             break;
         default:
             perror ("Error");
+            return(NULL);
             break;
     }
 };
 
 void identify(Base *p){
-
+    std::cout << "pointer to" << std::endl;
+    if(dynamic_cast<A*>(p))
+        std::cout << "A" << std::endl;
+    else if(dynamic_cast<B*>(p))
+        std::cout << "B" << std::endl;
+    else if(dynamic_cast<C*>(p))
+        std::cout << "C" << std::endl;
+    else
+        std::cout << "Unknown" << std::endl;
 };
 
 void identify(Base &p){
+    A a;
+    B b;
+    C c;
 
+    std::cout << "reference to" <<std::endl;
+
+    try{
+        a = dynamic_cast<A&>(p);
+        std::cout<< "A" <<std::endl;
+    } catch (std::exception & e)
+    {
+        try{
+        b = dynamic_cast<B&>(p);
+        std::cout<< "B" <<std::endl;
+        } catch (std::exception & e)
+        {
+            try{
+            c = dynamic_cast<C&>(p);
+            std::cout<< "C" <<std::endl;
+            } catch (std::exception & e){
+            }
+        }
+    }
 };

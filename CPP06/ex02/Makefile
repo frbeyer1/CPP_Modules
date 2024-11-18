@@ -1,11 +1,11 @@
 NAME = Serializer
 
 SRC =	main.cpp		\
-		Serializer.cpp
+		Base.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER =	Serializer.hpp
+HEADER =	Base.hpp
 
 CC = c++
 
