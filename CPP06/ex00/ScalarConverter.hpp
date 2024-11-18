@@ -28,12 +28,6 @@ class ScalarConverter
         ScalarConverter &operator=(const ScalarConverter &src);
 
         std::string _type;
-
-        int         _IntValue;
-        double      _DoubleValue;
-        float       _FloatValue;
-        char        _CharValue;
-
     public:
 
         static void convert(std::string literal);
