@@ -1,11 +1,15 @@
 #pragma once
 
 #include <iostream>
-#include <cstdio>
-#include <cstdlib>
+#include <sstream>
+#include <string>
+#include <variant>
+#include <stdexcept>
+#include <stdio.h>
+
 
 class Base{
-    protected:
+    private:
 
     public:
         Base();
@@ -14,15 +18,12 @@ class Base{
 };
 
 class A : public Base{
-
 };
 
 class B : public Base{
-
 };
 
 class C : public Base{
-
 };
 
 Base *generate(void);
