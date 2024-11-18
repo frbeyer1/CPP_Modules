@@ -4,7 +4,8 @@
 #include <sstream>
 #include <string>
 #include <stdexcept>
-#include <stdio.h>
+#include <cstdio>
+#include <cstdlib>
 
 
 class Base{

@@ -46,7 +46,7 @@ void identify(Base &p){
 
     std::cout << "reference to" <<std::endl;
 
-    try{
+    try{ //A failing dynamic cast to a reference type throws a bad_cast exception
         a = dynamic_cast<A&>(p);
         std::cout<< "A" <<std::endl;
     } catch (std::exception & e)
