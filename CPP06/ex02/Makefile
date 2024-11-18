@@ -1,4 +1,4 @@
-NAME = Serializer
+NAME = Base
 
 SRC =	main.cpp		\
 		Base.cpp
