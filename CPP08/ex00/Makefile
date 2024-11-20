@@ -1,10 +1,10 @@
-NAME = Array
+NAME = easyfind
 
 SRC =	main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER =	Array.hpp
+HEADER =	easyfind.hpp
 
 CC = c++
 
