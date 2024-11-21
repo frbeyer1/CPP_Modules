@@ -33,6 +33,14 @@ void Span::addNumber(int nbr){
     }
     _vector.push_back(nbr);
 };
+
+void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end){
+    if(_vector.size() + distance(begin, end) > _N){
+        throw std::out_of_range("Limit of N numbers reached!");
+    }
+    _vector.insert(_vector.end(), begin, end);
+};
+
 int Span::shortestSpan(){
     if(_vector.size() < 2){
         throw std::runtime_error("Not enough numbers to find shortest span!");
@@ -50,4 +58,4 @@ int Span::longestSpan(){
 };
 const std::vector<int>& Span::getVector() const{
     return(_vector);
-} 
+};
