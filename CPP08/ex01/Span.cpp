@@ -24,6 +24,7 @@ Span &Span::operator=(const Span &src){
 };
 
 Span::~Span(){
+    std::cout << "Destructor" << std::endl;
     _vector.clear();
 };
 
