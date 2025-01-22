@@ -8,7 +8,7 @@ OBJ = $(SRC:.cpp=.o)
 CC = c++
 
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address -I./include
-# FLAGS = -Wall -Wextra -Werror -std=c++98
+# FLAGS = -Wall -Wextra -Werror -std=c++98 -I./include
 
 RM = rm -f
 
