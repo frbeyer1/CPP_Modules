@@ -1,22 +1,20 @@
 NAME = btc
 
-SRC =	main.cpp \
-		BitcoinExchange.cpp
+SRC =	src/main.cpp \
+		src/BitcoinExchange.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER =	BitcoinExchange.hpp
-
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address -I./include
 # FLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
 all:$(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
+$(NAME): $(OBJ)
 		@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
