@@ -1,6 +1,6 @@
 NAME = btc
 
-SRC =	main.cpp
+SRC =	main.cpp \
 		BitcoinExchange.cpp
 
 OBJ = $(SRC:.cpp=.o)
@@ -9,8 +9,8 @@ HEADER =	BitcoinExchange.hpp
 
 CC = c++
 
-# FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+# FLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
