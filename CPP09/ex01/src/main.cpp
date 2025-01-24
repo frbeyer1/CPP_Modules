@@ -16,7 +16,6 @@ int main(int argc, char **argv)
     else
     {
         RPN test;
-        test.calculate(std::string(argv[1]));
+        return (test.calculate(std::string(argv[1])));
     }
-    return 0;
 }

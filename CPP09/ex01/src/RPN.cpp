@@ -13,11 +13,13 @@ RPN &RPN::operator=(const RPN &src){
     return (*this);
 }
 
-void RPN::calculate(std::string input){
+int RPN::calculate(std::string input){
     float a,b ;
 
-    if(input.empty())
-        return;
+    if(input.empty()){
+        std::cerr << "Error: empty input" << std::endl;
+        return 1;
+    }
     for(size_t i = 0; i < input.length(); i++){
         if(iswspace(input[i]))
             continue;
@@ -25,8 +27,8 @@ void RPN::calculate(std::string input){
             numbers.push(input[i] - '0');
         else if(input[i] == '+' || input[i] == '-' || input[i] == '*' || input[i] == '/'){
             if(numbers.size() < 2){
-                std::cerr << "Error: invalid value" << std::endl;
-                return;
+                std::cerr << "Error: missing value" << std::endl;
+                return 1;
             }
             a = numbers.top();
             numbers.pop();
@@ -43,11 +45,15 @@ void RPN::calculate(std::string input){
         }
         else{
             std::cerr << "Error: invalid character" << std::endl;
-            return;
+            return 1;
         }
     }
-    if(numbers.size() != 1)
+    if(numbers.size() != 1){
         std::cerr << "Error: invalid result" << std::endl;
-    else
+        return 1;
+    }
+    else{
         std::cout << numbers.top() << std::endl;
+        return 0;
+    }
 }
