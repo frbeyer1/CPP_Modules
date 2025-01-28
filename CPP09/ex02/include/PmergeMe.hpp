@@ -8,6 +8,8 @@
 #include <cstring>
 #include <vector>
 #include <deque>
+#include <algorithm>
+#include <sys/time.h>
 
 class PmergeMe{
     public:

@@ -13,29 +13,112 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src){
     return (*this);
 }
 
-int    PmergeMe::sort_vector(char **argv){
-    std::vector<int>    a;
-
+template <typename Container>
+static int save_to_container(Container &container, char **argv){
     for (int i = 1; argv[i]; i++)
     {
         for (int k = 1; argv[i][k]; k++){
-            if (!isdigit(argv[i][k]))
+            if (!isdigit(argv[i][k])){
+                std::cerr << "Error: Invalid input" << std::endl;
                 return 1;
+            }
         }
-        a.push_back(atoi(argv[i]));
+        if(atoi(argv[i]) < 0){
+            std::cerr << "Error: Invalid number" << std::endl;
+            return 1;
+        }
+        if (std::find(container.begin(), container.end(), atoi(argv[i])) != container.end()){
+            std::cerr << "Error: Duplicate number" << std::endl;
+            return 1;
+        }
+        container.push_back(atoi(argv[i]));
     }
-    //check for dups
+    return 0;
+}
 
-    for (std::vector<int>::const_iterator it = a.begin(); it != a.end(); ++it) {
+template <typename Container>
+static void print_container(Container &container){
+    for (typename Container::const_iterator it = container.begin(); it != container.end(); ++it) {
         std::cout << *it << " ";
     }
     std::cout << std::endl;
+}
+
+static bool isOdd(int number) {
+    return (number % 2 != 0);
+}
+
+template <typename Container>
+static void sort_container(Container &a, Container &b){
+
+
+}
+
+int    PmergeMe::sort_vector(char **argv){
+    std::vector<int>    a;
+    std::vector<int>    b;
+    int struggler = -1;
+    struct timeval start, end;
+    // int n = 0;
+
+    gettimeofday(&start, NULL);
+    if (save_to_container(a, argv))
+        return 1;
+    int n = a.size();
+    if (isOdd(n))
+    {
+        struggler = a.back();
+        a.pop_back();
+    }
+    n = a.size();
+    std::cout << "Before: ";
+    print_container(a);
+    // n = a.size();
+    // if (isOdd(n))
+    //     
+    sort_container(a, b);
+    gettimeofday(&end, NULL);
+    long seconds = end.tv_sec - start.tv_sec;
+    long microseconds = end.tv_usec - start.tv_usec;
+    double elapsed = seconds * 1e6 + microseconds;
+    std::cout << "After: ";
+    print_container(a);
+    std::cout << "Time to process a range of " << a.size() << " elements with std::vector: " << elapsed << " us" << std::endl;
     return 0;
 }
+
+int    PmergeMe::sort_deque(char **argv){
+    std::deque<int>    a;
+    std::deque<int>    b;
+    int struggler = -1;
+    struct timeval start, end;
+
+    gettimeofday(&start, NULL);
+    if (save_to_container(a, argv))
+        return 1;
+    int n = a.size();
+    if (isOdd(n))
+    {
+        struggler = a.back();
+        a.pop_back();
+    }
+    n = a.size();
+    sort_container(a, b);
+    gettimeofday(&end, NULL);
+    long seconds = end.tv_sec - start.tv_sec;
+    long microseconds = end.tv_usec - start.tv_usec;
+    double elapsed = seconds * 1e6 + microseconds;
+    std::cout << "Time to process a range of " << a.size() << " elements with std::deque: " << elapsed << " us" << std::endl;
+    return 0;
+}
+
 int    PmergeMe::start_sorting(char **argv){
 
-    // std::cout << "Before sorting: " << argv[1] << std::endl;
-    return(sort_vector(argv));
+    if(sort_vector(argv))
+        return 1;
+    if(sort_deque(argv))
+        return 1;
+    return 0;
 };
 
 /*
