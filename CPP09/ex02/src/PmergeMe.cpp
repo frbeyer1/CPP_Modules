@@ -1,1 +1,50 @@
 #include "PmergeMe.hpp"
+
+PmergeMe::PmergeMe(){}
+
+PmergeMe::PmergeMe(const PmergeMe &copy){
+    *this = copy;
+}
+
+PmergeMe::~PmergeMe(){}
+
+PmergeMe &PmergeMe::operator=(const PmergeMe &src){
+    (void)src;
+    return (*this);
+}
+
+int    PmergeMe::sort_vector(char **argv){
+    std::vector<int>    a;
+
+    for (int i = 1; argv[i]; i++)
+    {
+        for (int k = 1; argv[i][k]; k++){
+            if (!isdigit(argv[i][k]))
+                return 1;
+        }
+        a.push_back(atoi(argv[i]));
+    }
+    //check for dups
+
+    for (std::vector<int>::const_iterator it = a.begin(); it != a.end(); ++it) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+    return 0;
+}
+int    PmergeMe::start_sorting(char **argv){
+
+    // std::cout << "Before sorting: " << argv[1] << std::endl;
+    return(sort_vector(argv));
+};
+
+/*
+- pairwise comparison of n/2 numbers, if odd ignore one element
+- sort n/2 larger numbers 
+- make main chain and pend chain
+- main chain already sorted with larger numbers named a1, a2, a3, a4, ...
+- pend chain with unsorted numbers named b1, b2, b3, b4, ...
+- push first number of b chain if smaller than a1
+- generate jacobsthal numbers and turn b chain into this order for j <= n/2
+- then put b elements inbfornt of corresponding a elements, b2 infront a2
+*/

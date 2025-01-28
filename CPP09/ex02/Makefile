@@ -1,22 +1,20 @@
 NAME = PmergeMe
 
-SRC =	main.cpp
-		PmergeMe.cpp
+SRC =	src/main.cpp	\
+		src/PmergeMe.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER =	PmergeMe.hpp
-
 CC = c++
 
-# FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
-FLAGS = -Wall -Wextra -Werror -std=c++98
+# FLAGS = -Wall -Wextra -Werror -std=c++98 -g -I./include -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -std=c++98 -I./include
 
 RM = rm -f
 
 all:$(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
+$(NAME): $(OBJ)
 		@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
