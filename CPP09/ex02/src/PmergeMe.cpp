@@ -59,11 +59,12 @@ int    PmergeMe::sort_vector(char **argv){
     std::vector<int>    b;
     int struggler = -1;
     struct timeval start, end;
-    // int n = 0;
 
     gettimeofday(&start, NULL);
     if (save_to_container(a, argv))
         return 1;
+    std::cout << "Before: ";
+    print_container(a);
     int n = a.size();
     if (isOdd(n))
     {
@@ -71,11 +72,6 @@ int    PmergeMe::sort_vector(char **argv){
         a.pop_back();
     }
     n = a.size();
-    std::cout << "Before: ";
-    print_container(a);
-    // n = a.size();
-    // if (isOdd(n))
-    //     
     sort_container(a, b);
     gettimeofday(&end, NULL);
     long seconds = end.tv_sec - start.tv_sec;
