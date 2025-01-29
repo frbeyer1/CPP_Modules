@@ -174,7 +174,6 @@ static void sort_container(Container &con, PairContainer &pairs){
     size_t count;
     for (typename Container::iterator it = insert_order.begin(); it != insert_order.end(); it++){
         value_to_insert = b.begin() + *it - 1;
-        // std::cout << "Value to insert: " << value_to_insert << std::endl;
         last_position = a.begin() + *it + count;
         count++;
         index_in_a = binarySearch<Container>(a.begin(), last_position, *value_to_insert);
