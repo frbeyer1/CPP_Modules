@@ -167,6 +167,7 @@ static void sort_container(Container &con, PairContainer &pairs){
     std::cout << "insert_order chain: ";
     print_container(insert_order);
 
+    //insert elements from b to a with binary search
     typename Container::iterator value_to_insert;
     typename Container::iterator last_position;
     typename Container::iterator index_in_a;
