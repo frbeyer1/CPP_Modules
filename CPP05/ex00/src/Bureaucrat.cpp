@@ -49,7 +49,7 @@ const std::string Bureaucrat::getName(void) const{
     return(this->_name);
 };
 
-size_t Bureaucrat::getGrade(void) const{
+int Bureaucrat::getGrade(void) const{
     return(this->_grade);
 };
 

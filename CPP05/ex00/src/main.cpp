@@ -2,16 +2,23 @@
 
 int main()
 {
-    Bureaucrat *a = new Bureaucrat();
-    std::cout << a;
-
-    try
-    {
-        a->incrementGrade();
+    try {
+        Bureaucrat *a = new Bureaucrat("worker", 151);
+        std::cout << a;
+        try
+        {
+            a->incrementGrade();
+        }
+        catch(std::exception &e)
+        {
+            std::cerr << "Incrementing of " << a->getName() << " failed: " << e.what() << std::endl;
+        }
+        std::cout << a;
+        delete a;
     }
-    catch(Bureaucrat::GradeTooHighException &e)
+    catch(std::exception &e)
     {
-        std::cerr << "Incrementing of " << a->getName() << " failed: " << e.what() << std::endl;
+        std::cerr << "Creation of Bureaucrat failed: " << e.what() << std::endl;
+        
     }
-    std::cout << a;
 }

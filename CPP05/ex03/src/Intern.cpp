@@ -29,19 +29,30 @@ static Form *makeRobot(const std::string target){
 static Form *makeShrubbery(const std::string target){
     return (new ShrubberyCreationForm(target));
 }
+
 Form *Intern::makeForm(const std::string name, const std::string target){
 
     Form *(*all_forms[])(const std::string target) = {&makePresident, &makeRobot, &makeShrubbery};
-    std::string forms[] = {"pardon request", "robotomy request", "shrubbery creation"};
+    std::string forms[] = {"presidential pardon", "robotomy request", "shrubbery creation"};
 
-    for (int i = 0; i < 3; i++)
-    {
-        if(name == forms[i])
+
+    try {
+        for (int i = 0; i < 3; i++)
         {
-            std::cout << "Intern creates " << name << std::endl;
-            return (all_forms[i](target));
+            if(name == forms[i])
+            {
+                std::cout << "Intern creates " << name << std::endl;
+                return (all_forms[i](target));
+            }
         }
+        throw FormNotFoundException();
     }
-    std::cout << "Intern can't create From " << name << std::endl;
-    return(NULL);
+    catch (const FormNotFoundException& e) {
+        std::cerr << "Error: " << e.what() << ". Intern can't create Form " << name << std::endl;
+        return NULL;
+    }
+};
+
+const char *Intern::FormNotFoundException::what() const throw(){
+    return "Form not found";
 };

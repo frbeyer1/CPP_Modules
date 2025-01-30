@@ -47,9 +47,7 @@ bool Form::is_signed(void) const{
 
 void    Form::beSigned(Bureaucrat &src){
     if(src.getGrade() >= this->_sign_grade)
-    {
-        throw Form::GradeTooLowException();
-    }
+        throw (Form::GradeTooLowException());
     else
         this->_signed = true;
 };
@@ -71,7 +69,3 @@ std::ostream &operator<<(std::ostream &o, Form *a)
     o << "Form " << a->getName() << ": Execution Grade - " << a->getExecuteGrade() << ": Sign Grade:" << a->getSignGrade() <<std::endl;
     return(o);
 }
-
-void Form::execute(Bureaucrat const &executor) const{
-    (void)executor;
-};

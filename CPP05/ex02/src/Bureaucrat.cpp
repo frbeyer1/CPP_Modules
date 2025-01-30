@@ -10,7 +10,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &copy): _name(copy.getName() + "_copy"){
 };
 
 Bureaucrat::Bureaucrat(int grade): _name("default"){
-    std::cout << "Constructor for " << this-> getName() << "with grade " << grade << std::endl;
+    std::cout << "Constructor for " << this-> getName() << " with grade " << grade << std::endl;
     this->setGrade(grade);
 };
 
