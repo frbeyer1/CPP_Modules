@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <sys/time.h>
 #include <utility>
+#include <iomanip>
 
 class PmergeMe{
     public:
@@ -19,7 +20,5 @@ class PmergeMe{
         ~PmergeMe();
         PmergeMe &operator=(const PmergeMe &src);
 
-        int    sort_vector(char **argv);
-        int    sort_deque(char **argv);
         int    start_sorting(char **argv);
 };

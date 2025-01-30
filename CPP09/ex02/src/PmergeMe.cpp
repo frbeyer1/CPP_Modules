@@ -2,11 +2,11 @@
 
 PmergeMe::PmergeMe(){}
 
+PmergeMe::~PmergeMe(){}
+
 PmergeMe::PmergeMe(const PmergeMe &copy){
     *this = copy;
 }
-
-PmergeMe::~PmergeMe(){}
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &src){
     (void)src;
@@ -17,11 +17,28 @@ template <typename Container>
 static int save_to_container(Container &container, char **argv){
     for (int i = 1; argv[i]; i++)
     {
-        for (int k = 1; argv[i][k]; k++){
-            if (!isdigit(argv[i][k])){
-                std::cerr << "Error: Invalid input" << std::endl;
-                return 1;
+        if(strlen(argv[i]) > 1){
+            for(int j = 0; argv[i][j]; j++){
+                if (!isdigit(argv[i][j]) && !isspace(argv[i][j])) {
+                    std::cerr << "Error: Invalid input" << std::endl;
+                    return 1;
+                }
+                if(atoi(&argv[i][j]) < 0){
+                    std::cerr << "Error: Invalid number" << std::endl;
+                    return 1;
+                }
+                if (std::find(container.begin(), container.end(), atoi(&argv[i][j])) != container.end()){
+                    std::cerr << "Error: Duplicate number" << std::endl;
+                    return 1;
+                }
+                if(isdigit(argv[i][j]))
+                    container.push_back(argv[i][j] - '0');
             }
+            continue;
+        }
+        if (!isdigit(*argv[i])){
+            std::cerr << "Error: Invalid character" << std::endl;
+            return 1;
         }
         if(atoi(argv[i]) < 0){
             std::cerr << "Error: Invalid number" << std::endl;
@@ -44,15 +61,15 @@ static void print_container(Container &container){
     std::cout << std::endl;
 }
 
-//delete later
-template <typename Container>
-void print_Container_of_pairs(const Container& pairs) {
-    for (typename Container::const_iterator it = pairs.begin(); it != pairs.end(); ++it) {
-        std::cout << "(" << it->first << ", " << it->second << ") ";
-    }
-    std::cout << std::endl;
-}
-//
+
+// template <typename Container>
+// void print_Container_of_pairs(const Container& pairs) {
+//     for (typename Container::const_iterator it = pairs.begin(); it != pairs.end(); ++it) {
+//         std::cout << "(" << it->first << ", " << it->second << ") ";
+//     }
+//     std::cout << std::endl;
+// }
+
 
 template <typename Iterator>
 static void sort_pair_container(Iterator begin, Iterator end){
@@ -82,7 +99,7 @@ static typename Container::iterator binarySearch(typename Container::iterator le
     typename Container::iterator mid;
     while (std::distance(left, right) > 1){
         mid = left + std::distance(left, right) / 2;
-        if (value > *mid)
+        if (*mid < value)
             left = mid;
         else
             right = mid;
@@ -102,10 +119,7 @@ static void sort_container(Container &con, PairContainer &pairs){
     if (con.size() == 1)
         return;
     if (isOdd(con.size()))
-    {
         struggler = con.back();
-        con.pop_back();
-    }
 
     //pairwise comparison and push to pairs-Container
     typename Container::iterator it = con.begin();
@@ -119,14 +133,8 @@ static void sort_container(Container &con, PairContainer &pairs){
             pairs.push_back(std::make_pair(first, second));
         }
     }
-    std::cout << "Pairs: ";
-    print_Container_of_pairs(pairs);
-    std::cout << "Main chain: ";
-    print_container(con);
+
     sort_pair_container(pairs.begin(), pairs.end());
-    std::cout << "Swaped Pairs: ";
-    print_Container_of_pairs(pairs);
-    std::cout << std::endl;
 
     //generate main and pend chain
     typename PairContainer::iterator pair_it = pairs.begin();
@@ -137,10 +145,6 @@ static void sort_container(Container &con, PairContainer &pairs){
         a.push_back(pair_it->first);
         b.push_back(pair_it->second);
     }
-    std::cout << "a chain: ";
-    print_container(a);
-    std::cout << "b chain: ";
-    print_container(b);
 
     //generate order of insertion via jacobsthal numbers
     if(b.size() != 0)
@@ -164,73 +168,91 @@ static void sort_container(Container &con, PairContainer &pairs){
                 break;
         }
     }
-    std::cout << "insert_order chain: ";
-    print_container(insert_order);
-
+    
     //insert elements from b to a with binary search
     typename Container::iterator value_to_insert;
-    typename Container::iterator last_position;
     typename Container::iterator index_in_a;
-    size_t count;
-    for (typename Container::iterator it = insert_order.begin(); it != insert_order.end(); it++){
-        value_to_insert = b.begin() + *it - 1;
-        last_position = a.begin() + *it + count;
-        count++;
-        index_in_a = binarySearch<Container>(a.begin(), last_position, *value_to_insert);
+    for (typename Container::iterator itt = insert_order.begin(); itt != insert_order.end(); itt++){
+        value_to_insert = b.begin() + *itt - 1;
+        index_in_a = binarySearch<Container>(a.begin(), a.end(), *value_to_insert);
         a.insert(index_in_a, *value_to_insert);
+    }
+    // for (typename Container::iterator itt = b.begin(); itt != b.end(); itt++){
+    //     value_to_insert = itt;
+    //     index_in_a = binarySearch<Container>(a.begin(), a.end(), *value_to_insert);
+    //     a.insert(index_in_a, *value_to_insert);
+    // }
+    if (b.size() > 0) //push last element of b to a
+    {
+        index_in_a = binarySearch<Container>(a.begin(), a.end(), b.front());
+        a.insert(index_in_a, b.front());
     }
     if(struggler != -1){
-        index_in_a = binarySearch<Container>(a.begin(), last_position, struggler);
-        a.insert(index_in_a, *value_to_insert);
+        index_in_a = binarySearch<Container>(a.begin(), a.end(), struggler);
+        a.insert(index_in_a, struggler);
     }
+
+    con = a;
 }
 
-int    PmergeMe::sort_vector(char **argv){
-    
-    std::vector<int>                    vec;
-    std::vector<std::pair<int, int> >   pairs;
-    struct timeval start, end;
-
-    gettimeofday(&start, NULL);
-    if (save_to_container(vec, argv))
-        return 1;
-    // std::cout << "Before: ";
-    // print_container(vec);
-    sort_container(vec, pairs);
-    gettimeofday(&end, NULL);
-    long seconds = end.tv_sec - start.tv_sec;
-    long microseconds = end.tv_usec - start.tv_usec;
-    double elapsed = seconds * 1e6 + microseconds;
-    // std::cout << "After: ";
-    // print_container(vec);
-    std::cout << "Time to process a range of " << vec.size() << " elements with std::vector: " << elapsed << " us" << std::endl;
-    return 0;
+static double get_time_us() {
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    return tv.tv_sec * 1e6 + tv.tv_usec;
 }
 
-int    PmergeMe::sort_deque(char **argv){
-
-    std::deque<int>                    deq;
-    std::deque<std::pair<int, int> >   pairs;
-    struct timeval start, end;
-
-    gettimeofday(&start, NULL);
-    if (save_to_container(deq, argv))
-        return 1;
-    sort_container(deq, pairs);
-    gettimeofday(&end, NULL);
-    long seconds = end.tv_sec - start.tv_sec;
-    long microseconds = end.tv_usec - start.tv_usec;
-    double elapsed = seconds * 1e6 + microseconds;
-    std::cout << "Time to process a range of " << deq.size() << " elements with std::deque: " << elapsed << " us" << std::endl;
-    return 0;
+static void print_execution_time(const std::string& container_name, int range_size, double start_time, double end_time) {
+    double elapsed = end_time - start_time;
+    std::cout << "Time to process a range of " << range_size << " elements with std::" 
+              << container_name << " : " << std::fixed << std::setprecision(5) 
+              << elapsed << " us" << std::endl;
 }
 
 int    PmergeMe::start_sorting(char **argv){
 
-    if(sort_vector(argv))
+    std::vector<int>                    vec;
+    std::vector<std::pair<int, int> >   vec_pairs;
+    std::deque<int>                     deq;
+    std::deque<std::pair<int, int> >    deq_pairs;
+
+    
+
+    double start_vec = get_time_us();
+    if (save_to_container(vec, argv))
         return 1;
-    if(sort_deque(argv))
+    print_container(vec);
+    sort_container(vec, vec_pairs);
+    double end_vec = get_time_us();
+
+    std::cout << "Before: ";
+    for (int i = 1; argv[i]; i++){
+        if(strlen(argv[i]) == 1)
+            std::cout << argv[i];
+        else{
+            for(int j = 0; argv[i][j]; j++){
+                if(isdigit(argv[i][j]))
+                    std::cout << argv[i][j];
+                else
+                    continue;
+                std::cout << " ";
+            }  
+        }
+        std::cout << " ";
+    }
+    std::cout << std::endl;
+
+    double start_deq = get_time_us();
+    if (save_to_container(deq, argv))
         return 1;
+    sort_container(deq, deq_pairs);
+    double end_deq = get_time_us();
+
+    std::cout << "After: ";
+    print_container(vec);
+
+    print_execution_time("vector", vec.size(), start_vec, end_vec);
+    print_execution_time("deque", deq.size(), start_deq, end_deq);
+    
     return 0;
 };
 
@@ -239,8 +261,7 @@ int    PmergeMe::start_sorting(char **argv){
 - sort n/2 larger numbers 
 - make main chain and pend chain
 - check size if one element return
-- main chain with recursive binary sorted larger numbers named a1, a2, a3, a4, ...
-- if in a elemets get swap, swap pair elemts in b too
+- main chain with larger numbers named a1, a2, a3, a4, ...
 - pend chain with unsorted numbers named b1, b2, b3, b4, ...
 - push b1 to a when a is sorted, because of pair treatment we know smallest of a is bigger element in then pair
 - generate jacobsthal numbers and push b elements according to the jn order for j <= n/2
