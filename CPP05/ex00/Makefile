@@ -1,21 +1,20 @@
 NAME = Bureaucrat
 
-SRC =	main.cpp		\
-		Bureaucrat.cpp
+SRC =	src/main.cpp		\
+		src/Bureaucrat.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER =	Bureaucrat.hpp
-
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -I./include
+# FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 RM = rm -f
 
 all:$(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
+$(NAME): $(OBJ)
 		@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
