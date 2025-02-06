@@ -17,6 +17,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
     std::cout << "ShrubberyCreationForm Constructor for copy of " << src.getTarget() << " into "<< src.getName()<<std::endl;
     if(this == &src)
         return *this;
+    this->_target = src.getTarget();
     return *this;
 };
 

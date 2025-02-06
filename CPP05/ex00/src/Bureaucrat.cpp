@@ -28,11 +28,9 @@ Bureaucrat::~Bureaucrat(){
 };
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src){
-    std::cout << "Assignation operator called" << std::endl;
-    if(this == &src)
-        return *this;
+    std::cout << "Assignment operator called" << std::endl;
     this->_grade = src.getGrade();
-    return *this;
+    return(*this);
 };
 
 void Bureaucrat::incrementGrade(void){

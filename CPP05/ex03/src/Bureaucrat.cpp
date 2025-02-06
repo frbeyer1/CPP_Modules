@@ -79,8 +79,10 @@ std::ostream &operator<<(std::ostream &o, Bureaucrat *a)
 
 void    Bureaucrat::signForm(Form &src)
 {
-    if(src.is_signed() == true)
-        std::cout<<this->_name<<" couldn't sign "<<src.getName()<< ", because its already signed";
+    if(src.is_signed() == true){
+        std::cout<<this->_name<<" couldn't sign "<<src.getName()<< ", because its already signed" << std::endl;;
+        return;
+    }
     try
     {
         src.beSigned(*this);
@@ -88,7 +90,7 @@ void    Bureaucrat::signForm(Form &src)
     }
     catch (std::exception& e)
     {
-        std::cout<<this->_name<<" couldn't sign "<<src.getName()<< ", because "<< e.what()<< std::endl;
+        std::cout<<this->_name<<" couldn't sign "<<src.getName()<< ", because "<< e.what() << std::endl;
     }
 };
 

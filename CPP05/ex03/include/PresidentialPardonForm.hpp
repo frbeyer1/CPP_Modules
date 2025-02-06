@@ -9,7 +9,7 @@ class Form;
 class PresidentialPardonForm : public Form
 {
     private:
-        const std::string _target;
+        std::string _target;
     public:
 
         PresidentialPardonForm();
