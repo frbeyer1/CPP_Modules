@@ -1,7 +1,7 @@
 #include "Base.hpp"
 
 int main(){
-    // srand(time(NULL));
+    srand(time(NULL));
     Base *test = generate();
     identify(test);
     identify(*test);

@@ -214,7 +214,7 @@ static void  DoubleConversion(std::string literal){
     else
     {
         std::cout << "float: " << static_cast<float>(toDouble) << "f" <<  std::endl;
-        std::cout << "double: " << toDouble << "0" <<  std::endl;
+        std::cout << "double: " << toDouble <<  std::endl;
     }
 };
 
