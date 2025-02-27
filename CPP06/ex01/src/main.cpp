@@ -12,4 +12,4 @@ int main()
     return 0;
 }
 
-//-unrelated types
+//-used for unrelated types

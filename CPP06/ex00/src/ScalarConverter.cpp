@@ -174,9 +174,6 @@ static void  FloatConversion(std::string literal){
         std::cout << "float: " << toFloat << "f" <<  std::endl;
         std::cout << "double: " << static_cast<double>(toFloat) << "0" <<  std::endl;
     }
-    // if( < 1000006 && > -1000006) ??????
-    // else
-        // std::cout << "float: " << toFloat << "f" <<  std::endl;
 };
 
 static void  DoubleConversion(std::string literal){

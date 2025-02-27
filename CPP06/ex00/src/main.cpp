@@ -11,5 +11,5 @@ int main(int ac, char**av)
     return 0;
 }
 
-//-static_cats happends at compile time
+//-static_cast happends at compile time
 //-related types
