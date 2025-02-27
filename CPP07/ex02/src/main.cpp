@@ -68,7 +68,7 @@ int main(int, char**)
     }
     
     std::cout << std::endl;
-    delete [] mirror;//
+    delete [] mirror;
     return 0;
 }
 
