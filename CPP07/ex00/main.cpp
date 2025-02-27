@@ -15,3 +15,8 @@ int main( void ) {
     std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
     return 0;
 }
+
+/*
+Templates:
+- allow code that can work with different data types without repeating code
+*/
