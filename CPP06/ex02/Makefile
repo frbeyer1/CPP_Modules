@@ -1,16 +1,14 @@
 NAME = Base
 
-SRC =	main.cpp		\
-		Base.cpp
+SRC =	src/main.cpp		\
+		src/Base.cpp
 
 OBJ = $(SRC:.cpp=.o)
-
-HEADER =	Base.hpp
 
 CC = c++
 
 # FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -I./inc
 
 RM = rm -f
 

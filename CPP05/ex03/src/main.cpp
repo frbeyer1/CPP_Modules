@@ -31,7 +31,7 @@ int main()
 		std::cout << std::endl;
 		form = bob.makeForm("shrubbery creation", "Fred");
 		try{
-			form->beSigned(karen);
+			karen.signForm(*form);
 			karen.executeForm(*form);
 		}
 		catch (std::exception &e)
@@ -59,5 +59,3 @@ int main()
 	return (0);
 
 };
-
-// still error when enter invalid form in makeform

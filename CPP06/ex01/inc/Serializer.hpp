@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include <stdint.h>
 #include "limits.h"
-// #include <cctype>
 
 class Data
 {
@@ -18,8 +17,17 @@ class Data
         Data(Data &copy);
         ~Data();
         Data &operator=(const Data &src);
-
-
 };
-uintptr_t serialize(Data *ptr);
-Data *deserialize(uintptr_t raw);
+
+class serializer{
+
+    private:
+        serializer();
+        serializer(serializer &copy);
+        ~serializer();
+        serializer &operator=(const serializer &src);
+
+    public:
+        static uintptr_t serialize(Data *ptr);
+        static Data *deserialize(uintptr_t raw);
+};

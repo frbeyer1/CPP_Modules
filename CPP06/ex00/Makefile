@@ -1,22 +1,20 @@
 NAME = convert
 
-SRC =	main.cpp		\
-		ScalarConverter.cpp
+SRC =	src/main.cpp		\
+		src/ScalarConverter.cpp
 
 OBJ = $(SRC:.cpp=.o)
-
-HEADER =	ScalarConverter.hpp
 
 CC = c++
 
 # FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -I./inc
 
 RM = rm -f
 
 all:$(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
+$(NAME): $(OBJ)
 		@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp

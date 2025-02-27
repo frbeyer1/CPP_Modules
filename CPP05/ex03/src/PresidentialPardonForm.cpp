@@ -17,6 +17,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
     std::cout << "PresidentialPardonForm Constructor for copy of " << src.getTarget() << " into "<< src.getName()<<std::endl;
     if(this == &src)
         return *this;
+    this->_target = src.getTarget();
     return *this;
 };
 

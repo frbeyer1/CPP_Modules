@@ -121,25 +121,22 @@ static void CharConversion(std::string literal){
 };
 
 static void IntConversion(std::string literal){
-    double toDouble = strtod(literal.c_str(), NULL);
+    long toDouble = atol(literal.c_str());
 
-    if (isprint(toDouble))
-        std::cout << "char: '" << static_cast<char>(toDouble) << "'" << std::endl;
-    else if (isascii(toDouble))
-        std::cout << "char: Non displayable" << std::endl;
-    else
+    if(toDouble <= INT_MIN || toDouble >= INT_MAX )
+    {
         std::cout << "char: overflow" << std::endl;
-
-    if(toDouble <= INT_MAX || toDouble >= INT_MIN)
-        std::cout << "int: " << static_cast<int>(toDouble) << std::endl;
-    else
         std::cout << "int: overflow" << std::endl;
-
-    // if(toInt < 1000006 && toInt > -1000006)
+        std::cout << "float: overflow" << std::endl;
+        std::cout << "double: overflow" << std::endl;
+        return;
+    }
+    if (isascii(toDouble) && std::isprint(toDouble))
+        std::cout << "char: '" << static_cast<char>(toDouble) << "'" << std::endl;
+    else
+        std::cout << "char: Non displayable" << std::endl;
+    std::cout << "int: " << static_cast<int>(toDouble) << std::endl;
     std::cout << "float: " << static_cast<float>(toDouble) << ".0f" <<  std::endl;
-    // else
-        // std::cout << "float: " << toFloat << "f" <<  std::endl;
-
     std::cout << "double: " << toDouble << ".0" <<  std::endl;
 };
 
@@ -214,7 +211,7 @@ static void  DoubleConversion(std::string literal){
     else
     {
         std::cout << "float: " << static_cast<float>(toDouble) << "f" <<  std::endl;
-        std::cout << "double: " << toDouble << "0" <<  std::endl;
+        std::cout << "double: " << toDouble <<  std::endl;
     }
 };
 

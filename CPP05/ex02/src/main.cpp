@@ -7,7 +7,7 @@
 int main()
 {
 	try {
-		Bureaucrat *a = new Bureaucrat("lol", 1);
+		Bureaucrat *a = new Bureaucrat("Karen", 1);
 		Form *b = new PresidentialPardonForm("default");
 		// Form *b = new RobotomyRequestForm("ROBOT");
 		// Form *b = new ShrubberyCreationForm("some trees");

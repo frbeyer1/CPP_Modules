@@ -10,3 +10,6 @@ int main(int ac, char**av)
         std::cout<<"Please input two Arguments"<<std::endl;
     return 0;
 }
+
+//-static_cats happends at compile time
+//-related types

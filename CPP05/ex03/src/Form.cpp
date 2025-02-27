@@ -21,7 +21,7 @@ Form &Form::operator=(const Form &src){
     std::cout<<"Form -"<<src._name<<"- Assignment operator"<<std::endl;
     if(this == &src)
         return *this;
-    // this->_grade = src.();
+    this->_signed = src.is_signed();
     return *this;
 };
 
@@ -46,7 +46,7 @@ bool Form::is_signed(void) const{
 };
 
 void    Form::beSigned(Bureaucrat &src){
-    if(src.getGrade() >= this->_sign_grade)
+    if(src.getGrade() > this->_sign_grade)
     {
         throw Form::GradeTooLowException();
     }
@@ -68,7 +68,7 @@ const char *Form::FormNotSignedException::what(void) const throw(){
 
 std::ostream &operator<<(std::ostream &o, Form *a)
 {
-    o << "Form " << a->getName() << ": Execution Grade - " << a->getExecuteGrade() << ": Sign Grade:" << a->getSignGrade() <<std::endl;
+    o << "Form " << a->getName() << ": Execution Grade - " << a->getExecuteGrade() << ": Sign Grade:" << a->getSignGrade() << std::endl;
     return(o);
 }
 

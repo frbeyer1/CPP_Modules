@@ -17,6 +17,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &s
     std::cout << "RobotomyRequestForm Constructor for copy of " << src.getTarget() << " into "<< src.getName()<<std::endl;
     if(this == &src)
         return *this;
+    this->_target = src.getTarget();
     return *this;
 };
 
