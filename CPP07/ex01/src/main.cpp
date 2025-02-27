@@ -10,3 +10,6 @@ int main(){
     iter<int>(arr, 3, plusone);
     return 0;
 }
+/*
+- iterates trough given array and applies function
+*/
