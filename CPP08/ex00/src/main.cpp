@@ -11,7 +11,7 @@ int main(){
 	try
 	{
 		std::cout << *easyfind(v, 5) << std::endl;
-		std::cout << *easyfind(v, 20) << std::endl;
+		// std::cout << *easyfind(v, 20) << std::endl;
 	}
 	catch (std::exception &e)
 	{

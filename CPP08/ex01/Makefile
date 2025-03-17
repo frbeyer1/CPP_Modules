@@ -1,22 +1,20 @@
 NAME = Span
 
-SRC =	main.cpp \
-		Span.cpp
+SRC =	src/main.cpp \
+		src/Span.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER =	Span.hpp
-
 CC = c++
 
-# FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
-FLAGS = -Wall -Wextra -Werror -std=c++98
+# FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address -I./inc
+FLAGS = -Wall -Wextra -Werror -std=c++98 -I./inc
 
 RM = rm -f
 
 all:$(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
+$(NAME): $(OBJ)
 		@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp

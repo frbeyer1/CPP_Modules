@@ -1,21 +1,19 @@
 NAME = easyfind
 
-SRC =	main.cpp
+SRC =	src/main.cpp
 
 OBJ = $(SRC:.cpp=.o)
-
-HEADER =	easyfind.hpp
 
 CC = c++
 
 # FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -I./inc
 
 RM = rm -f
 
 all:$(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
+$(NAME): $(OBJ)
 		@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp

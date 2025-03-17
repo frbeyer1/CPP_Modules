@@ -88,9 +88,4 @@ int main(){
 	std::cout << b.longestSpan() << std::endl;
 	std::cout << "----------------------------------" << std::endl;
 	std::cout << std::endl;
-	
-	// for (size_t i = 0; i < N; ++i) {
-    // 	std::cout << a.getVector().at(i) << " ";
-	// }
-	// delete a;
 }
