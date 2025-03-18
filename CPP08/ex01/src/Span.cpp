@@ -16,8 +16,6 @@ Span::Span(const Span &copy){
 
 Span &Span::operator=(const Span &src){
     std::cout << "Assignment Operator"<< std::endl;
-    if(this == &src)
-        return (*this);
     _N = src._N;
     _vector = src._vector;
     return (*this);

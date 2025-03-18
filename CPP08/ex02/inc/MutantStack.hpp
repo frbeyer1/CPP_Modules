@@ -22,8 +22,6 @@ class MutantStack : public std::stack<T>
 
         MutantStack &operator=(const MutantStack &src){
             std::cout << "Assignment Operator" << std::endl;
-            if(this == &src)
-                return(*this);
             return (*this);
         };
 
@@ -47,3 +45,10 @@ class MutantStack : public std::stack<T>
             return this->c.end();
         }
 };
+
+/*
+Purpose:
+    - stack is designed for following the LIFO method, providing better efficiency when needed (only top element gets accesed)
+    - stack does not have begin() and end() functions
+    - here: define iterators and begin(), end() methods
+*/
