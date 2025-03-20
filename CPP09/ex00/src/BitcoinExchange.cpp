@@ -1,5 +1,4 @@
 #include "BitcoinExchange.hpp"
-// multimap
 
 BitcoinExchange::BitcoinExchange(){}
 BitcoinExchange::~BitcoinExchange(){}
@@ -100,12 +99,12 @@ float BitcoinExchange::checkValue(std::string value)
 
 void BitcoinExchange::calculate(std::string date, float value)
 {
-    std::multimap<std::string, float>::iterator it = _database.find(date);
+    std::map<std::string, float>::iterator it = _database.find(date);
     if(it != _database.end())
         std::cout << date << " => " << value << " = " << value*it->second << std::endl;
     else
     {
-        std::multimap<std::string, float>::iterator lowerDate;
+        std::map<std::string, float>::iterator lowerDate;
         for (it = _database.begin(); it != _database.end(); ++it)
         {
             if(it->first <= date)

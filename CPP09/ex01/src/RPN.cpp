@@ -35,13 +35,13 @@ int RPN::calculate(std::string input){
             b = numbers.top();
             numbers.pop();
             if(input[i] == '+')
-                numbers.push(a + b);
+                numbers.push(b + a);
             if(input[i] == '-')
-                numbers.push(a - b);
+                numbers.push(b - a);
             if(input[i] == '*')
-                numbers.push(a * b);
+                numbers.push(b * a);
             if(input[i] == '/')
-                numbers.push(a / b);
+                numbers.push(b / a);
         }
         else{
             std::cerr << "Error: invalid character" << std::endl;
