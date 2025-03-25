@@ -17,25 +17,25 @@ template <typename Container>
 static int save_to_container(Container &container, char **argv){
     for (int i = 1; argv[i]; i++)
     {
-        if(strlen(argv[i]) > 1){
-            for(int j = 0; argv[i][j]; j++){
-                if (!isdigit(argv[i][j]) && !isspace(argv[i][j])) {
-                    std::cerr << "Error: Invalid input" << std::endl;
-                    return 1;
-                }
-                if(atoi(&argv[i][j]) < 0){
-                    std::cerr << "Error: Invalid number" << std::endl;
-                    return 1;
-                }
-                if (std::find(container.begin(), container.end(), atoi(&argv[i][j])) != container.end()){
-                    std::cerr << "Error: Duplicate number" << std::endl;
-                    return 1;
-                }
-                if(isdigit(argv[i][j]))
-                    container.push_back(argv[i][j] - '0');
-            }
-            continue;
-        }
+        // if(strlen(argv[i]) > 1){
+        //     for(int j = 0; argv[i][j]; j++){
+        //         if (!isdigit(argv[i][j]) && !isspace(argv[i][j])) {
+        //             std::cerr << "Error: Invalid input" << std::endl;
+        //             return 1;
+        //         }
+        //         if(atoi(&argv[i][j]) < 0){
+        //             std::cerr << "Error: Invalid number" << std::endl;
+        //             return 1;
+        //         }
+        //         if (std::find(container.begin(), container.end(), atoi(&argv[i][j])) != container.end()){
+        //             std::cerr << "Error: Duplicate number" << std::endl;
+        //             return 1;
+        //         }
+        //         if(isdigit(argv[i][j]))
+        //             container.push_back(argv[i][j] - '0');
+        //     }
+        //     continue;
+        // }
         if (!isdigit(*argv[i])){
             std::cerr << "Error: Invalid character" << std::endl;
             return 1;
@@ -266,4 +266,24 @@ int    PmergeMe::start_sorting(char **argv){
 - push b1 to a when a is sorted, because of pair treatment we know smallest of a is bigger element in then pair
 - generate jacobsthal numbers and push b elements according to the jn order for j <= n/2
 - for getting position of b element in a use the recursive binary search again
+*/
+
+/*
+about containers used:
+- Both support random access, but std::vector is typically faster due to its contiguous memory layout
+
+vector:
+- stores elements contiguously in a single block of memory
+- supports efficient insertion and deletion at the end (push_back, pop_back)
+- generally offers better cache locality due to contiguous storage (data is stored in a single, uninterrupted block of consecutive memory addresses),
+  leading to faster iteration and random access
+- may need to reallocate and copy all elements when it grows beyond its capacity
+- may use more memory than necessary due to over-allocation for growth
+
+deque:
+- uses multiple smaller arrays linked together, allowing for more flexible memory management
+- allows efficient insertion and deletion at both ends (push_front, push_back, pop_front, pop_back)
+- is more efficient for frequent insertions and deletions at the front of the container
+- allocating new blocks as needed, making it more efficient for unpredictable growth
+
 */
