@@ -1,5 +1,4 @@
 #include "RPN.hpp"
-// stack
 
 int main(int argc, char **argv)
 {
@@ -19,3 +18,9 @@ int main(int argc, char **argv)
         return (test.calculate(std::string(argv[1])));
     }
 }
+
+/*
+std::stack:
+    - container adapter: it is built upon other underlying container types, such as std::deque, std::vector, or std::list.
+    - LIFO Behavior
+*/

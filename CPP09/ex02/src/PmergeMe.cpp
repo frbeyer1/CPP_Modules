@@ -109,6 +109,7 @@ static typename Container::iterator binarySearch(typename Container::iterator le
     return left;
 }
 
+//merge-insertion algorythm
 template <typename Container, typename PairContainer>
 static void sort_container(Container &con, PairContainer &pairs){
     int struggler = -1;
@@ -220,7 +221,6 @@ int    PmergeMe::start_sorting(char **argv){
     double start_vec = get_time_us();
     if (save_to_container(vec, argv))
         return 1;
-    print_container(vec);
     sort_container(vec, vec_pairs);
     double end_vec = get_time_us();
 
@@ -255,35 +255,3 @@ int    PmergeMe::start_sorting(char **argv){
     
     return 0;
 };
-
-/*
-- pairwise comparison of n/2 numbers, if odd ignore one element
-- sort n/2 larger numbers 
-- make main chain and pend chain
-- check size if one element return
-- main chain with larger numbers named a1, a2, a3, a4, ...
-- pend chain with unsorted numbers named b1, b2, b3, b4, ...
-- push b1 to a when a is sorted, because of pair treatment we know smallest of a is bigger element in then pair
-- generate jacobsthal numbers and push b elements according to the jn order for j <= n/2
-- for getting position of b element in a use the recursive binary search again
-*/
-
-/*
-about containers used:
-- Both support random access, but std::vector is typically faster due to its contiguous memory layout
-
-vector:
-- stores elements contiguously in a single block of memory
-- supports efficient insertion and deletion at the end (push_back, pop_back)
-- generally offers better cache locality due to contiguous storage (data is stored in a single, uninterrupted block of consecutive memory addresses),
-  leading to faster iteration and random access
-- may need to reallocate and copy all elements when it grows beyond its capacity
-- may use more memory than necessary due to over-allocation for growth
-
-deque:
-- uses multiple smaller arrays linked together, allowing for more flexible memory management
-- allows efficient insertion and deletion at both ends (push_front, push_back, pop_front, pop_back)
-- is more efficient for frequent insertions and deletions at the front of the container
-- allocating new blocks as needed, making it more efficient for unpredictable growth
-
-*/
